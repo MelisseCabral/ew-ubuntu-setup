@@ -164,11 +164,11 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
 
 echo 'installing dbeaver'
-wget -c https://dbeaver.io/files/6.0.0/dbeaver-ce_6.0.0_amd64.deb
-sudo dpkg -i dbeaver-ce_6.0.0_amd64.deb
-sudo apt-get install -f
+wget -O - https://dbeaver.io/debs/dbeaver.gpg.key | sudo apt-key add -
+echo "deb https://dbeaver.io/debs/dbeaver-ce /" | sudo tee /etc/apt/sources.list.d/dbeaver.list
+sudo apt-get update && sudo apt-get install dbeaver-ce
 
-echo 'installing dbeaver'
+echo 'installing postgres'
 sudo apt-get install postgresql
 
 echo 'installing insomnia'
